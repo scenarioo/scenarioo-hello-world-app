@@ -4,14 +4,28 @@
     <meta charset="UTF-8">
     <title>Use case 1</title>
     <link rel="stylesheet" type="text/css" href="../css/layout.css">
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
 <h1>Use case 1</h1>
-<div>
-    Enter you name:
-    <input type="text" placeholder="your name" />
-    <br/>
-    <input type="button" value="submit" />
+<div class="container">
+    <div class="dialog">
+        <p class="title">Enter you name:</p>
+        <input id="nameInput" type="text" placeholder="your name" />
+
+        <a id="submitLink" href="showName.html" class="submitLink">Send</a>
+    </div>
 </div>
+
+<script>
+    $(function() {
+        $("#nameInput").change(function() {
+            var name = $("#nameInput").val();
+            var baseUrl = "showName.html?name=";
+            var withParam = baseUrl + name;
+            $("#submitLink").attr("href", withParam);
+        });
+    });
+</script>
 </body>
 </html>
